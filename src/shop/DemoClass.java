@@ -21,51 +21,7 @@ public class DemoClass {
 
     public static void main(String[] args) {
 
-        /*Category category1 = new Category("Phones");
-        category1.add(new Product("Apple", 500, 5));
-        category1.add(new Product("Samsung", 400, 4.8));
-        category1.add(new Product("Xiomi", 200, 4.2));
-
-        Category category2 = new Category("TV");
-        category2.add(new Product("Apple TV", 1500, 5.1));
-        category2.add(new Product("Samsung SmartTV", 1400, 4.7));
-        category2.add(new Product("Motorolla", 1200, 4.1));
-
-        Category category3 = new Category("Shoes");
-        category3.add(new Product("Nike", 150, 4.9));
-        category3.add(new Product("Adidas", 140, 4.4));
-        category3.add(new Product("Puma", 130, 4.0));
-
-        List<Category> categories = new ArrayList<>();
-        categories.add(category1);
-        categories.add(category2);
-        categories.add(category3);
-
-        String password;
-        System.out.println("Enter login");
-        if (scanner.hasNextLine()) {
-            String login = scanner.nextLine();
-
-            System.out.println("Enter password");
-            if (scanner.hasNextLine()) {
-                password = scanner.nextLine();
-
-                User user = new User(login, password);
-
-                boolean startStop = false;
-                do {
-                    choice(categories, user);
-                    startStop = isStartStop(scanner, startStop);
-                } while (startStop);
-
-                *//*serialize(user.getBasket());
-                System.out.println(deserialize());*//*
-            }
-        }*/
-
-
-        User user = new User();
-        user = getUser();
+        User user = getUser();
         List<Category> categoryList = getCategory();
         boolean startStop = false;
         do {
@@ -232,7 +188,13 @@ public class DemoClass {
             int id = scanner.nextInt();
             for (Category category : categories) {
                 if (category.getId() == id) {
-                    System.out.println(category);
+                    System.out.printf("%-19s %-17s %-20s", "Имя", "Рейтинг", "Цена");
+                    System.out.println();
+                    for (Product v : category.getProducts().values()) {
+                        System.out.printf("%-19s %-17.1f %-20.1f",
+                                v.getName(), v.getRating(), v.getPrice());
+                        System.out.println();
+                    }
                 }
             }
         }
@@ -260,12 +222,18 @@ public class DemoClass {
     private static void choiceOfCategory(int choiceOfCategory, Category category, User user) {
         Scanner scanner = new Scanner(System.in);
         if (category.getId() == choiceOfCategory) {
-            category.getProducts().forEach((k, v) -> System.out.println("Type in '"
-                    + k + "' to choose this product: " + v));
+            category.getProducts().forEach((k, v) -> System.out.printf("Type in %d to choose this product " +
+                            "Name: %-15s  Rate: %-5.1f Price: %-10.1f\n",
+                    k, v.getName(), v.getRating(), v.getPrice()));
             if (scanner.hasNextInt()) {
                 int productToBasket = scanner.nextInt();
                 if (category.getProduct(productToBasket) != null) {
                     user.getBasket().add(category.getProduct(productToBasket));
+                    System.out.println("Type in amount of this product");
+                    if (scanner.hasNextInt()) {
+                        int amount = scanner.nextInt();
+                        user.getBasket().getProduct(productToBasket).setAmount(amount);
+                    }
                 }
             }
         }

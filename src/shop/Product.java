@@ -8,8 +8,8 @@ public class Product implements Serializable {
     private double price;
     private double rating;
     private String nameOfCategory;
-    private static int countProduct = 1;
     private int id;
+    private int amount;
 
     public Product(String name, double price, double rating, int id, String nameOfCategory) {
         this.name = name;
@@ -17,11 +17,17 @@ public class Product implements Serializable {
         this.rating = rating;
         this.id = id;
         this.nameOfCategory = nameOfCategory;
-        /*id = countProduct;
-        countProduct++;*/
     }
 
     public Product() {
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public int getId() {

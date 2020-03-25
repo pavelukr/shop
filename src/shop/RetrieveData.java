@@ -10,6 +10,7 @@ public class RetrieveData {
     private static final String SELECT_QUERY_USERS = "SELECT * FROM users;";
     private static final String SELECT_QUERY_CATEGORY = "SELECT * FROM catalog;";
     private static final String SELECT_QUERY_PRODUCT = "SELECT * FROM product;";
+    private static final String DELETE_QUERY_HISTORY = "SELECT * FROM history;";
 
     public static User getUser() {
         User user = new User();
@@ -29,6 +30,7 @@ public class RetrieveData {
     }
 
     public static List<Category> getCategory() {
+        deleteHistory();
         List<Category> categories = new ArrayList<>();
         try (Connection connection1 =
                      DriverManager.getConnection(URL, USER, PASSWORD);
@@ -73,5 +75,20 @@ public class RetrieveData {
             System.out.println(e.getMessage());
         }
         return categories;
+    }
+
+    public static void deleteHistory() {
+        try (Connection connection5 =
+                     DriverManager.getConnection(URL, USER, PASSWORD)){
+            PreparedStatement stmt = connection5.prepareStatement(DELETE_QUERY_HISTORY,
+                    ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                rs.deleteRow();
+            }
+        } catch (
+                SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }

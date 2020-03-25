@@ -6,20 +6,16 @@ import java.util.TreeMap;
 
 public class Category {
     private SortedMap<Integer, Product> products;
-    private static int count = 1;
     private int id;
     private String name;
 
     public Category(String name, int id) {
-        //this();
         this.id = id;
         this.name = name;
         products = new TreeMap<>();
     }
 
     public Category() {
-        /*id = count;
-        count++;*/
     }
 
     public SortedMap<Integer, Product> getProducts() {
@@ -47,7 +43,6 @@ public class Category {
     }
 
     public void add(Product product) {
-        //product.setNameOfCategory(name);
         products.put(product.getId(), product);
     }
 

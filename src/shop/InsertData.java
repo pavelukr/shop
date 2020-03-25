@@ -16,7 +16,7 @@ public class InsertData {
             for (Product product : user.getBasket().getProducts().values()) {
                 productStmt.setInt(1, i);
                 productStmt.setInt(2, product.getId());
-                productStmt.setInt(3, 1);
+                productStmt.setInt(3, product.getAmount());
                 productStmt.setDate(4, date);
                 productStmt.setInt(5, user.getId());
                 productStmt.addBatch();
