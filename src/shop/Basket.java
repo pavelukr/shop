@@ -5,7 +5,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.io.Serializable;
 
-public class Basket implements Serializable{
+public class Basket implements Serializable {
     private SortedMap<Integer, Product> products;
 
     public Basket(SortedMap<Integer, Product> products) {
@@ -34,8 +34,10 @@ public class Basket implements Serializable{
 
     @Override
     public String toString() {
-        return "Basket{" +
-                "category=" + products +
+        return "Basket{"
+                +
+                "products=" + products
+                +
                 '}';
     }
 

@@ -11,7 +11,8 @@ public class Product implements Serializable {
     private int id;
     private int amount;
 
-    public Product(String name, double price, double rating, int id, String nameOfCategory) {
+    public Product(String name, double price,
+                   double rating, int id, String nameOfCategory) {
         this.name = name;
         this.price = price;
         this.rating = rating;
@@ -72,11 +73,16 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", rating=" + rating +
-                ", nameOfCategory='" + nameOfCategory + '\'' +
+        return "Product{"
+                +
+                "name='" + name + '\''
+                +
+                ", price=" + price
+                +
+                ", rating=" + rating
+                +
+                ", nameOfCategory='" + nameOfCategory + '\''
+                +
                 '}';
     }
 
@@ -85,9 +91,12 @@ public class Product implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Double.compare(product.price, price) == 0 &&
-                Double.compare(product.rating, rating) == 0 &&
-                name.equals(product.name) &&
+        return Double.compare(product.price, price) == 0
+                &&
+                Double.compare(product.rating, rating) == 0
+                &&
+                name.equals(product.name)
+                &&
                 nameOfCategory.equals(product.nameOfCategory);
     }
 

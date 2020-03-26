@@ -17,7 +17,7 @@ import static shop.RetrieveData.getUser;
 public class DemoClass {
 
     private static final String FILE_NAME = "basketSer.ser";
-    public static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -38,7 +38,8 @@ public class DemoClass {
         System.out.println("If you want to continue type in 'Yes', else 'No'");
         if (scanner.hasNext()) {
             String answer = scanner.nextLine();
-            if (answer.equals("yes") || answer.equals("Yes") || answer.equals("1")) {
+            if (answer.equals("yes") || answer.equals("Yes")
+                    || answer.equals("1")) {
                 startStop = true;
             } else {
                 startStop = false;
@@ -85,7 +86,9 @@ public class DemoClass {
                 user.boughtProducts();
                 break;
             default:
-                System.out.println("You made mistake in writing some option, recheck instructions again");
+                System.out.println("You made mistake in "
+                        +
+                        "writing some option, recheck instructions again");
                 instructions();
         }
     }
@@ -95,18 +98,26 @@ public class DemoClass {
         Scanner scanner = new Scanner(System.in);
         if (scanner.hasNext()) {
             String scannerChoice = scanner.nextLine();
-            if (scannerChoice.equals("catalogs") || scannerChoice.equals("Catalogs") || scannerChoice.equals("1")) {
+            if (scannerChoice.equals("catalogs")
+                    || scannerChoice.equals("Catalogs")
+                    || scannerChoice.equals("1")) {
                 choice = Variant.CATALOGS;
             }
-            if (scannerChoice.equals("Catalog") || scannerChoice.equals("catalog") || scannerChoice.equals("2")) {
+            if (scannerChoice.equals("Catalog")
+                    || scannerChoice.equals("catalog")
+                    || scannerChoice.equals("2")) {
                 choice = Variant.CATALOG;
             }
-            if (scannerChoice.equals("to basket") || scannerChoice.equals("To Basket") ||
-                    scannerChoice.equals("To basket") || scannerChoice.equals("3")) {
+            if (scannerChoice.equals("to basket")
+                    || scannerChoice.equals("To Basket")
+                    || scannerChoice.equals("To basket")
+                    || scannerChoice.equals("3")) {
                 choice = Variant.TO_BASKET;
             }
-            if (scannerChoice.equals("Buy Products") || scannerChoice.equals("Buy products") ||
-                    scannerChoice.equals("buy products") || scannerChoice.equals("4")) {
+            if (scannerChoice.equals("Buy Products")
+                    || scannerChoice.equals("Buy products")
+                    || scannerChoice.equals("buy products")
+                    || scannerChoice.equals("4")) {
                 choice = Variant.BUY_PRODUCTS;
             }
         }
@@ -124,14 +135,16 @@ public class DemoClass {
         }
         if (scanner.hasNext()) {
             int choice = scanner.nextInt();
-            System.out.printf("%-20s %-20s %-20s", "Имя", "Цена", "Рейтинг");
+            System.out.printf("%-20s %-20s %-20s", "Имя",
+                    "Цена", "Рейтинг");
             System.out.println();
             switch (choice) {
                 case 1:
                     productsSort.sort(Comparator.comparing(Product::getName));
                     for (Product product : productsSort) {
                         System.out.printf("%-20s %-20.1f %-20.1f",
-                                product.getName(), product.getPrice(), product.getRating());
+                                product.getName(), product.getPrice(),
+                                product.getRating());
                         System.out.println();
                     }
                     break;
@@ -139,7 +152,8 @@ public class DemoClass {
                     productsSort.sort(Comparator.comparing(Product::getPrice));
                     for (Product product : productsSort) {
                         System.out.printf("%-20s %-20.1f %-20.1f",
-                                product.getName(), product.getPrice(), product.getRating());
+                                product.getName(), product.getPrice(),
+                                product.getRating());
                         System.out.println();
                     }
                     break;
@@ -147,14 +161,16 @@ public class DemoClass {
                     productsSort.sort(Comparator.comparing(Product::getRating));
                     for (Product product : productsSort) {
                         System.out.printf("%-20s %-20.1f %-20.1f",
-                                product.getName(), product.getPrice(), product.getRating());
+                                product.getName(), product.getPrice(),
+                                product.getRating());
                         System.out.println();
                     }
                     break;
                 case 4:
                     for (Product product : productsSort) {
                         System.out.printf("%-20s %-20.1f %-20.1f",
-                                product.getName(), product.getPrice(), product.getRating());
+                                product.getName(), product.getPrice(),
+                                product.getRating());
                         System.out.println();
                     }
                     break;
@@ -172,23 +188,34 @@ public class DemoClass {
     }
 
     public static void instructions() {
-        System.out.println("1. If you want to see all catalogs you should type in 'Catalogs' or '1'");
-        System.out.println("2. If you want to see a certain catalog you should type in 'Catalog' or '2'");
-        System.out.println("3. If you want to put some products in basket you should type in 'To basket' or '3'");
-        System.out.println("4. If you want to buy products from the basket you should type in 'Buy products' or '4'");
+        System.out.println("1. If you want to see all catalogs"
+                +
+                " you should type in 'Catalogs' or '1'");
+        System.out.println("2. If you want to see a certain catalog"
+                +
+                " you should type in 'Catalog' or '2'");
+        System.out.println("3. If you want to put some products in"
+                +
+                " basket you should type in 'To basket' or '3'");
+        System.out.println("4. If you want to buy products from "
+                +
+                "the basket you should type in 'Buy products' or '4'");
     }
 
     public static void printCatalog(List<Category> categories) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("You have these categories: ");
         for (Category category : categories) {
-            System.out.println("Type in '" + category.getId() + "' to see list of products from this category: " + category.getName());
+            System.out.println("Type in '" + category.getId()
+                    +
+                    "' to see list of products from this category: " + category.getName());
         }
         if (scanner.hasNextInt()) {
             int id = scanner.nextInt();
             for (Category category : categories) {
                 if (category.getId() == id) {
-                    System.out.printf("%-19s %-17s %-20s", "Имя", "Рейтинг", "Цена");
+                    System.out.printf("%-19s %-17s %-20s",
+                            "Имя", "Рейтинг", "Цена");
                     System.out.println();
                     for (Product v : category.getProducts().values()) {
                         System.out.printf("%-19s %-17.1f %-20.1f",
@@ -219,12 +246,15 @@ public class DemoClass {
         }
     }
 
-    private static void choiceOfCategory(int choiceOfCategory, Category category, User user) {
+    private static void choiceOfCategory(int choiceOfCategory,
+                                         Category category, User user) {
         Scanner scanner = new Scanner(System.in);
         if (category.getId() == choiceOfCategory) {
-            category.getProducts().forEach((k, v) -> System.out.printf("Type in %d to choose this product " +
-                            "Name: %-15s  Rate: %-5.1f Price: %-10.1f\n",
-                    k, v.getName(), v.getRating(), v.getPrice()));
+            category.getProducts().forEach((k, v) ->
+                    System.out.printf("Type in %d to choose this product "
+                                    +
+                                    "Name: %-15s  Rate: %-5.1f Price: %-10.1f\n",
+                            k, v.getName(), v.getRating(), v.getPrice()));
             if (scanner.hasNextInt()) {
                 int productToBasket = scanner.nextInt();
                 if (category.getProduct(productToBasket) != null) {
@@ -237,5 +267,13 @@ public class DemoClass {
                 }
             }
         }
+    }
+
+    public static Scanner getScanner() {
+        return scanner;
+    }
+
+    public static void setScanner(Scanner scanner) {
+        DemoClass.scanner = scanner;
     }
 }

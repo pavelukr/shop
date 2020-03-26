@@ -35,7 +35,8 @@ public class RetrieveData {
         try (Connection connection1 =
                      DriverManager.getConnection(URL, USER, PASSWORD);
              Statement statement1 = connection1.createStatement()) {
-            ResultSet categorySet = statement1.executeQuery(SELECT_QUERY_CATEGORY);
+            ResultSet categorySet =
+                    statement1.executeQuery(SELECT_QUERY_CATEGORY);
             while (categorySet.next()) {
                 categories.add(new Category(categorySet.getString("name"),
                         categorySet.getInt("id")));
@@ -47,7 +48,8 @@ public class RetrieveData {
         try (Connection connection2 =
                      DriverManager.getConnection(URL, USER, PASSWORD);
              Statement statement2 = connection2.createStatement()) {
-            ResultSet productSet = statement2.executeQuery(SELECT_QUERY_PRODUCT);
+            ResultSet productSet =
+                    statement2.executeQuery(SELECT_QUERY_PRODUCT);
             List<Product> tempList = new ArrayList<>();
             while (productSet.next()) {
                 for (Category category : categories) {
@@ -79,9 +81,11 @@ public class RetrieveData {
 
     public static void deleteHistory() {
         try (Connection connection5 =
-                     DriverManager.getConnection(URL, USER, PASSWORD)){
-            PreparedStatement stmt = connection5.prepareStatement(DELETE_QUERY_HISTORY,
-                    ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                     DriverManager.getConnection(URL, USER, PASSWORD)) {
+            PreparedStatement stmt =
+                    connection5.prepareStatement(DELETE_QUERY_HISTORY,
+                            ResultSet.TYPE_SCROLL_INSENSITIVE,
+                            ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 rs.deleteRow();

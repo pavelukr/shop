@@ -55,7 +55,7 @@ public class User {
     public void boughtProducts() {
         Locale locale = Locale.getDefault();
         LocalDate today = LocalDate.now();
-        System.out.printf("%-39s %-20s", "Дата",today);
+        System.out.printf("%-39s %-20s", "Дата", today);
         System.out.println();
         System.out.println();
         ResourceBundle bundle = ResourceBundle.getBundle("topic", locale);
@@ -70,22 +70,28 @@ public class User {
         double finalPrice = 0;
         for (Product v : basket.getProducts().values()) {
             System.out.printf("%-19s %-19s %-20s",
-                    v.getName(), v.getNameOfCategory(), numberFormat.format(v.getPrice()));
+                    v.getName(), v.getNameOfCategory(),
+                    numberFormat.format(v.getPrice()));
             System.out.println();
             finalPrice += v.getPrice();
         }
 
         System.out.println("-----------------------------------------------");
-        System.out.printf("%-39s %-20s", "Итого:", numberFormat.format(finalPrice));
+        System.out.printf("%-39s %-20s", "Итого:",
+                numberFormat.format(finalPrice));
         System.out.println();
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", basket=" + basket +
+        return "User{"
+                +
+                "login='" + login + '\''
+                +
+                ", password='" + password + '\''
+                +
+                ", basket=" + basket
+                +
                 '}';
     }
 
@@ -94,8 +100,10 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(login, user.login) &&
-                Objects.equals(password, user.password) &&
+        return Objects.equals(login, user.login)
+                &&
+                Objects.equals(password, user.password)
+                &&
                 Objects.equals(basket, user.basket);
     }
 
