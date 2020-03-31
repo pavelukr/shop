@@ -1,4 +1,4 @@
-package shop;
+package shop.model;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -85,14 +85,10 @@ public class User {
     @Override
     public String toString() {
         return "User{"
-                +
-                "login='" + login + '\''
-                +
-                ", password='" + password + '\''
-                +
-                ", basket=" + basket
-                +
-                '}';
+                + "login='" + login + '\''
+                + ", password='" + password + '\''
+                + ", basket=" + basket
+                + '}';
     }
 
     @Override
@@ -101,10 +97,8 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(login, user.login)
-                &&
-                Objects.equals(password, user.password)
-                &&
-                Objects.equals(basket, user.basket);
+                && Objects.equals(password, user.password)
+                && Objects.equals(basket, user.basket);
     }
 
     @Override

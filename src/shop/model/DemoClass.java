@@ -1,4 +1,4 @@
-package shop;
+package shop.model;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import static shop.InsertData.insertData;
-import static shop.RetrieveData.getCategory;
-import static shop.RetrieveData.getUser;
+import static shop.dao.ProductDAO.productToCategory;
+import static shop.dao.HistoryDAO.insertData;
+import static shop.dao.UserDAO.getUser;
 
 public class DemoClass {
 
@@ -22,7 +22,7 @@ public class DemoClass {
     public static void main(String[] args) {
 
         User user = getUser();
-        List<Category> categoryList = getCategory();
+        List<Category> categoryList = productToCategory();
         boolean startStop = false;
         do {
             choice(categoryList, user);
@@ -87,8 +87,7 @@ public class DemoClass {
                 break;
             default:
                 System.out.println("You made mistake in "
-                        +
-                        "writing some option, recheck instructions again");
+                        + "writing some option, recheck instructions again");
                 instructions();
         }
     }
@@ -129,14 +128,11 @@ public class DemoClass {
         instructionsForSorting();
         List<Product> productsSort = new ArrayList<>();
         for (Category category : categories) {
-            category.getProducts().forEach((k, v) -> {
-                productsSort.add(v);
-            });
+            category.getProducts().forEach((k, v) -> productsSort.add(v));
         }
         if (scanner.hasNext()) {
             int choice = scanner.nextInt();
-            System.out.printf("%-20s %-20s %-20s", "Имя",
-                    "Цена", "Рейтинг");
+            System.out.printf("%-20s %-20s %-20s", "Имя", "Цена", "Рейтинг");
             System.out.println();
             switch (choice) {
                 case 1:
@@ -189,17 +185,13 @@ public class DemoClass {
 
     public static void instructions() {
         System.out.println("1. If you want to see all catalogs"
-                +
-                " you should type in 'Catalogs' or '1'");
+                + " you should type in 'Catalogs' or '1'");
         System.out.println("2. If you want to see a certain catalog"
-                +
-                " you should type in 'Catalog' or '2'");
+                + " you should type in 'Catalog' or '2'");
         System.out.println("3. If you want to put some products in"
-                +
-                " basket you should type in 'To basket' or '3'");
+                + " basket you should type in 'To basket' or '3'");
         System.out.println("4. If you want to buy products from "
-                +
-                "the basket you should type in 'Buy products' or '4'");
+                + "the basket you should type in 'Buy products' or '4'");
     }
 
     public static void printCatalog(List<Category> categories) {
@@ -207,15 +199,13 @@ public class DemoClass {
         System.out.println("You have these categories: ");
         for (Category category : categories) {
             System.out.println("Type in '" + category.getId()
-                    +
-                    "' to see list of products from this category: " + category.getName());
+                    + "' to see list of products from this category: " + category.getName());
         }
         if (scanner.hasNextInt()) {
             int id = scanner.nextInt();
             for (Category category : categories) {
                 if (category.getId() == id) {
-                    System.out.printf("%-19s %-17s %-20s",
-                            "Имя", "Рейтинг", "Цена");
+                    System.out.printf("%-19s %-17s %-20s", "Имя", "Рейтинг", "Цена");
                     System.out.println();
                     for (Product v : category.getProducts().values()) {
                         System.out.printf("%-19s %-17.1f %-20.1f",
@@ -230,8 +220,8 @@ public class DemoClass {
     public static void choosingFromList(List<Category> categories, User user) {
         System.out.println("You have these categories: ");
         for (Category category : categories) {
-            System.out.println("Type in '" + category.getId() + "' to choose" +
-                    " a product from this category: " + category.getName());
+            System.out.println("Type in '" + category.getId() + "' to choose"
+                    + " a product from this category: " + category.getName());
         }
         puttingProduct(categories, user);
     }
@@ -252,8 +242,7 @@ public class DemoClass {
         if (category.getId() == choiceOfCategory) {
             category.getProducts().forEach((k, v) ->
                     System.out.printf("Type in %d to choose this product "
-                                    +
-                                    "Name: %-15s  Rate: %-5.1f Price: %-10.1f\n",
+                                    + "Name: %-15s  Rate: %-5.1f Price: %-10.1f\n",
                             k, v.getName(), v.getRating(), v.getPrice()));
             if (scanner.hasNextInt()) {
                 int productToBasket = scanner.nextInt();

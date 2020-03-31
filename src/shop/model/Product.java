@@ -1,4 +1,4 @@
-package shop;
+package shop.model;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -74,16 +74,11 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return "Product{"
-                +
-                "name='" + name + '\''
-                +
-                ", price=" + price
-                +
-                ", rating=" + rating
-                +
-                ", nameOfCategory='" + nameOfCategory + '\''
-                +
-                '}';
+                + "name='" + name + '\''
+                + ", price=" + price
+                + ", rating=" + rating
+                + ", nameOfCategory='" + nameOfCategory + '\''
+                + '}';
     }
 
     @Override
@@ -92,12 +87,9 @@ public class Product implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return Double.compare(product.price, price) == 0
-                &&
-                Double.compare(product.rating, rating) == 0
-                &&
-                name.equals(product.name)
-                &&
-                nameOfCategory.equals(product.nameOfCategory);
+                && Double.compare(product.rating, rating) == 0
+                && name.equals(product.name)
+                && nameOfCategory.equals(product.nameOfCategory);
     }
 
     @Override

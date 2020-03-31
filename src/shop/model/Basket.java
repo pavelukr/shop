@@ -1,4 +1,4 @@
-package shop;
+package shop.model;
 
 import java.util.Objects;
 import java.util.SortedMap;
@@ -35,10 +35,8 @@ public class Basket implements Serializable {
     @Override
     public String toString() {
         return "Basket{"
-                +
-                "products=" + products
-                +
-                '}';
+                + "products=" + products
+                + '}';
     }
 
     @Override
