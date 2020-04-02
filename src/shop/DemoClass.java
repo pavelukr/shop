@@ -1,4 +1,6 @@
-package shop.model;
+package shop;
+
+import shop.model.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
