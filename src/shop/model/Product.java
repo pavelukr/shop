@@ -1,7 +1,7 @@
 package shop.model;
 
-import java.io.Serializable;
 import java.util.Objects;
+import java.io.Serializable;
 
 public class Product implements Serializable {
     private String name;

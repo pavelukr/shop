@@ -1,8 +1,8 @@
 package shop.model;
 
 import java.util.Objects;
-import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.SortedMap;
 
 public class Category {
     private SortedMap<Integer, Product> products;

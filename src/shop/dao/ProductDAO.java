@@ -4,8 +4,8 @@ import shop.model.Category;
 import shop.model.Product;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 import static shop.dao.CategoryDAO.getCategory;
 import static shop.dao.ConnectionData.*;

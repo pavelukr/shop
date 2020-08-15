@@ -1,8 +1,9 @@
 package shop.dao;
 
+import java.sql.*;
+
 import shop.model.User;
 
-import java.sql.*;
 
 import static shop.dao.ConnectionData.*;
 

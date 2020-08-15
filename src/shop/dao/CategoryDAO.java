@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static shop.dao.ConnectionData.*;
-import static shop.dao.ConnectionData.PASSWORD;
 import static shop.dao.HistoryDAO.deleteHistory;
+import static shop.dao.ConnectionData.PASSWORD;
 
 public class CategoryDAO {
 

@@ -1,7 +1,7 @@
 package shop.dao;
 
-import shop.model.Product;
 import shop.model.User;
+import shop.model.Product;
 
 import java.sql.*;
 import java.time.LocalDate;

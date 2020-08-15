@@ -1,7 +1,7 @@
 package shop.model;
 
-import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.text.NumberFormat;
 import java.util.*;
 
 public class User {

@@ -1,8 +1,8 @@
 package shop.model;
 
 import java.util.Objects;
-import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.SortedMap;
 import java.io.Serializable;
 
 public class Basket implements Serializable {
